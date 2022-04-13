@@ -1,14 +1,14 @@
-8package uk.ac.tees.aad.B1212361;
+package uk.ac.tees.aad.B1212361;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MAPS extends AppCompatActivity {
+public class Confirmation extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+        setContentView(R.layout.activity_confirmation);
     }
 }
