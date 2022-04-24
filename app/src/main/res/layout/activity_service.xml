@@ -6,4 +6,105 @@
     android:layout_height="match_parent"
     tools:context=".Service">
 
+    <Button
+        android:id="@+id/news"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/round_button3"
+        android:text="@string/medical_news"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/medical_cons" />
+
+    <Button
+        android:id="@+id/medical_cons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_button"
+
+        android:text="@string/consult_doctor"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/news"
+        app:layout_constraintEnd_toEndOf="@+id/news"
+        app:layout_constraintStart_toStartOf="@+id/news"
+        app:layout_constraintTop_toBottomOf="@+id/medical_ser" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textview"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/signout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/signout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/logout"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.88"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/emer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_button2"
+
+        android:text="@string/emergency"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/medical_ser"
+        app:layout_constraintEnd_toEndOf="@+id/medical_ser"
+        app:layout_constraintStart_toStartOf="@+id/medical_ser"
+        app:layout_constraintTop_toBottomOf="@+id/medical_emer" />
+
+    <Button
+        android:id="@+id/medical_emer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/round_button2"
+        android:text="@string/medical_emergency"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/emer"
+        app:layout_constraintEnd_toEndOf="@+id/emer"
+        app:layout_constraintStart_toStartOf="@+id/emer"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <Button
+        android:id="@+id/medical_ser"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_button"
+        android:text="@string/medical_services"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/medical_cons"
+        app:layout_constraintEnd_toEndOf="@+id/medical_cons"
+        app:layout_constraintStart_toStartOf="@+id/medical_cons"
+        app:layout_constraintTop_toBottomOf="@+id/emer" />
 </androidx.constraintlayout.widget.ConstraintLayout>

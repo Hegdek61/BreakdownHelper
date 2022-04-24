@@ -5,4 +5,16 @@
     <string name="email">email</string>
     <string name="password">password</string>
     <string name="todo">todo</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="register">Register</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_mobile_number">Enter Mobile Number</string>
+    <string name="textview">TextView</string>
+    <string name="medical_news">Medical News</string>
+    <string name="logout">Logout !</string>
+    <string name="medical_emergency">Medical Emergency</string>
+    <string name="emergency">Emergency</string>
+    <string name="medical_services">Medical Services</string>
+    <string name="consult_doctor">Consult Doctor</string>
 </resources>
