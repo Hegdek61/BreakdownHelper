@@ -12,20 +12,25 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
  public class RegisterActivity extends AppCompatActivity {
 
-     private FirebaseAuth mAuth;
+     FirebaseAuth mAuth;
      Button createButton;
      Button loginButton;
      EditText emailInput;
      EditText passwordInput;
      EditText nameInput;
      EditText mobileInput;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,9 +100,26 @@ import com.google.firebase.auth.FirebaseUser;
                              if (task.isSuccessful()) {
                                  // Sign in success, update UI with the signed-in user's information
                                  Log.d("SUCCESS", "createUserWithEmail:success");
-                                 FirebaseUser user = mAuth.getCurrentUser();
+                                 FirebaseDatabase
+                                         .getInstance()
+                                         .getReference("users")
+                                         .child(mAuth.getCurrentUser().getUid())
+                                         .setValue(new AppUsersDetails(nameInput.getText().toString(),mobileInput.getText().toString()))
+                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                             @Override
+                                             public void onSuccess(Void aVoid) {
+                                                 Toast.makeText(getApplicationContext(),"Accout Created Successfully",Toast.LENGTH_LONG).show();
+                                             }
+                                         })
+                                         .addOnFailureListener(new OnFailureListener() {
+                                             @Override
+                                             public void onFailure(@NonNull Exception e) {
+                                                 Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_LONG).show();
+                                             }
+                                         });
 
-                                 startActivity(new Intent(getApplicationContext(),Service.class));
+
+//                                 startActivity(new Intent(getApplicationContext(),Service.class));
                              } else {
                                  // If sign in fails, display a message to the user.
                                  Log.w("FAIL", "createUserWithEmail:failure", task.getException());

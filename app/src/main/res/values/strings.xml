@@ -17,4 +17,6 @@
     <string name="emergency">Emergency</string>
     <string name="medical_services">Medical Services</string>
     <string name="consult_doctor">Consult Doctor</string>
+    <string name="enter_message">Enter Message (optional)</string>
+    <string name="get_medical_emergency">Get medical Emergency</string>
 </resources>
