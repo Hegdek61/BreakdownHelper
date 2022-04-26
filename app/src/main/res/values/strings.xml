@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BreakdownHelper</string>
+    <string name="app_name">EmergencyHelper</string>
     <string name="login">Login</string>
     <string name="create_account">Create Account</string>
     <string name="email">email</string>
