@@ -24,6 +24,8 @@ import com.google.firebase.database.FirebaseDatabase;
  public class RegisterActivity extends AppCompatActivity {
 
      FirebaseAuth mAuth;
+     FirebaseDatabase firebaseDatabase;
+     DatabaseReference databaseReference;
      Button createButton;
      Button loginButton;
      EditText emailInput;
@@ -38,6 +40,9 @@ import com.google.firebase.database.FirebaseDatabase;
         setContentView(R.layout.activity_register);
 
         mAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("users");
+
 
         loginButton = findViewById(R.id.login_button_register);
         createButton = findViewById(R.id.register_acoount_create);
@@ -98,28 +103,27 @@ import com.google.firebase.database.FirebaseDatabase;
                          @Override
                          public void onComplete(@NonNull Task<AuthResult> task) {
                              if (task.isSuccessful()) {
-                                 // Sign in success, update UI with the signed-in user's information
-                                 Log.d("SUCCESS", "createUserWithEmail:success");
-                                 FirebaseDatabase
-                                         .getInstance()
-                                         .getReference("users")
-                                         .child(mAuth.getCurrentUser().getUid())
-                                         .setValue(new AppUsersDetails(nameInput.getText().toString(),mobileInput.getText().toString()))
+
+                                 AppUsersDetails userObj = new AppUsersDetails(nameInput.getText().toString(),mobileInput.getText().toString());
+
+
+                                 databaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                                         .setValue(userObj)
                                          .addOnSuccessListener(new OnSuccessListener<Void>() {
                                              @Override
                                              public void onSuccess(Void aVoid) {
                                                  Toast.makeText(getApplicationContext(),"Accout Created Successfully",Toast.LENGTH_LONG).show();
+                                                 startActivity(new Intent(getApplicationContext(),Service.class));
                                              }
                                          })
                                          .addOnFailureListener(new OnFailureListener() {
                                              @Override
                                              public void onFailure(@NonNull Exception e) {
                                                  Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_LONG).show();
+                                                 startActivity(new Intent(getApplicationContext(),Service.class));
                                              }
                                          });
 
-
-//                                 startActivity(new Intent(getApplicationContext(),Service.class));
                              } else {
                                  // If sign in fails, display a message to the user.
                                  Log.w("FAIL", "createUserWithEmail:failure", task.getException());

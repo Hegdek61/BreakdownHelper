@@ -1,18 +1,9 @@
 package uk.ac.tees.aad.B1212361;
 
-public class AppUsersDetails {
+public class Contact {
 
-    public String name;
-
-    public String mobile;
-
-    public AppUsersDetails(String name, String mobile) {
-        this.name = name;
-        this.mobile = mobile;
-    }
-
-    public AppUsersDetails() {
-    }
+    String name;
+    String mobile;
 
     public String getName() {
         return name;
@@ -28,5 +19,13 @@ public class AppUsersDetails {
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+    public Contact(String name, String mobile) {
+        this.name = name;
+        this.mobile = mobile;
+    }
+
+    public Contact() {
     }
 }

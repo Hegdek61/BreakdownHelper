@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Confirmation">
+    tools:context=".Confirmation2">
+
+
 
     <ImageView
         android:id="@+id/imageView3"
@@ -23,7 +25,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:gravity="center|center_horizontal|center_vertical"
-        android:text="@string/emergency_medical_team_reaching_your_location"
+        android:text="@string/emergency_message_is_sent_to_the_list"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -31,4 +33,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

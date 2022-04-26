@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "319546105205",
-    "project_id": "emergency-b88b0",
-    "storage_bucket": "emergency-b88b0.appspot.com"
+    "project_number": "646794178418",
+    "project_id": "medical-c5724",
+    "storage_bucket": "medical-c5724.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:319546105205:android:a902511d25dfeab611473c",
+        "mobilesdk_app_id": "1:646794178418:android:de4eed9ea2cc89fd9cf7eb",
         "android_client_info": {
           "package_name": "uk.ac.tees.aad.B1212361"
         }
       },
       "oauth_client": [
         {
-          "client_id": "319546105205-kccnr1b1qo8q20nnbk74epoue3qmon9j.apps.googleusercontent.com",
+          "client_id": "646794178418-udd8hndmus6e1tu2dvm1tnr0vlkmsust.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAIHUScEa0YoLK6bSLzSzBz_ZJFb5O3c2A"
+          "current_key": "AIzaSyAvDhxH-QlEjttE0dX8MxjHbQmtEaPzS1U"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "319546105205-kccnr1b1qo8q20nnbk74epoue3qmon9j.apps.googleusercontent.com",
+              "client_id": "646794178418-udd8hndmus6e1tu2dvm1tnr0vlkmsust.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
