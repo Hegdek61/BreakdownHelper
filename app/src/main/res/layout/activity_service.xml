@@ -20,18 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/medical_cons" />
 
-    <Button
-        android:id="@+id/medical_cons"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_button"
 
-        android:text="@string/consult_doctor"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/news"
-        app:layout_constraintEnd_toEndOf="@+id/news"
-        app:layout_constraintStart_toStartOf="@+id/news"
-        app:layout_constraintTop_toBottomOf="@+id/medical_ser" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -76,36 +65,36 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/round_button2"
-
         android:text="@string/emergency"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/medical_ser"
-        app:layout_constraintEnd_toEndOf="@+id/medical_ser"
-        app:layout_constraintStart_toStartOf="@+id/medical_ser"
+        app:layout_constraintBottom_toTopOf="@+id/medical_cons"
+        app:layout_constraintEnd_toEndOf="@+id/medical_cons"
+        app:layout_constraintStart_toStartOf="@+id/medical_cons"
         app:layout_constraintTop_toBottomOf="@+id/medical_emer" />
+
+    <Button
+        android:id="@+id/medical_cons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_button"
+        android:text="@string/consult_doctor"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/news"
+        app:layout_constraintEnd_toEndOf="@+id/news"
+        app:layout_constraintStart_toStartOf="@+id/news"
+        app:layout_constraintTop_toBottomOf="@+id/emer" />
 
     <Button
         android:id="@+id/medical_emer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
         android:background="@drawable/round_button2"
         android:text="@string/medical_emergency"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/emer"
         app:layout_constraintEnd_toEndOf="@+id/emer"
         app:layout_constraintStart_toStartOf="@+id/emer"
+
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
-    <Button
-        android:id="@+id/medical_ser"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_button"
-        android:text="@string/medical_services"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/medical_cons"
-        app:layout_constraintEnd_toEndOf="@+id/medical_cons"
-        app:layout_constraintStart_toStartOf="@+id/medical_cons"
-        app:layout_constraintTop_toBottomOf="@+id/emer" />
 </androidx.constraintlayout.widget.ConstraintLayout>

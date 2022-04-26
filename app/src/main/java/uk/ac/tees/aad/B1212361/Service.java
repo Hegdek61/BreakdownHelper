@@ -1,7 +1,10 @@
 package uk.ac.tees.aad.B1212361;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricPrompt;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Intent;
@@ -22,6 +25,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.concurrent.Executor;
+
 public class Service extends AppCompatActivity {
 
 
@@ -29,12 +34,15 @@ public class Service extends AppCompatActivity {
     Button emer;
     Button news;
     Button consult;
-    Button mediServeice;
     TextView title;
     TextView signout;
 
     double latitude;
     double longitude;
+
+    private Executor executor;
+    private BiometricPrompt biometricPrompt;
+    private BiometricPrompt.PromptInfo promptInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +53,46 @@ public class Service extends AppCompatActivity {
         emer = findViewById(R.id.emer);
         news = findViewById(R.id.news);
         consult = findViewById(R.id.medical_cons);
-        mediServeice = findViewById(R.id.medical_ser);
         title = findViewById(R.id.title);
         signout = findViewById(R.id.signout);
+
+        executor = ContextCompat.getMainExecutor(this);
+
+        biometricPrompt = new BiometricPrompt(this,executor, new BiometricPrompt.AuthenticationCallback() {
+            @Override
+            public void onAuthenticationError(int errorCode,
+                                              @NonNull CharSequence errString) {
+                super.onAuthenticationError(errorCode, errString);
+                Toast.makeText(getApplicationContext(),
+                        "Authentication error: " + errString, Toast.LENGTH_SHORT)
+                        .show();
+            }
+
+            @Override
+            public void onAuthenticationSucceeded(
+                    @NonNull BiometricPrompt.AuthenticationResult result) {
+                super.onAuthenticationSucceeded(result);
+
+                Intent intent = new Intent(getApplicationContext(),Consult.class);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                super.onAuthenticationFailed();
+                Toast.makeText(getApplicationContext(), "Authentication failed",
+                        Toast.LENGTH_SHORT)
+                        .show();
+            }
+        });
+
+        promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Biometric login for my Consultation")
+                .setSubtitle("Log in using your biometric credential")
+                .setNegativeButtonText("Use account password")
+                .build();
+
+
 
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,30 +124,24 @@ public class Service extends AppCompatActivity {
         View.OnClickListener news_lis = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(),MedicalNewss.class);
                 startActivity(intent);
             }
         };
         View.OnClickListener consult_lis = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
-                startActivity(intent);
+
+                    biometricPrompt.authenticate(promptInfo);
+
             }
         };
-        View.OnClickListener medical_service_lis = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
-                startActivity(intent);
-            }
-        };
+
 
         medical_emer.setOnClickListener(medical_emer_list);
         emer.setOnClickListener(emer_list);
         news.setOnClickListener(news_lis);
         consult.setOnClickListener(consult_lis);
-        mediServeice.setOnClickListener(medical_service_lis);
 
         fetchLocation();
 
@@ -112,8 +151,7 @@ public class Service extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
+
                 AppUsersDetails value = dataSnapshot.getValue(AppUsersDetails.class);
                 title.setText("Hey "+value.getName()+"!");
 
