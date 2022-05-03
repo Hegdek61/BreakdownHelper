@@ -43,8 +43,7 @@ public class Emergency extends AppCompatActivity {
 
         list = findViewById(R.id.list);
         smsManager = SmsManager.getDefault();
-
-        message = "I Have Emergency, please find me at lat:"+getIntent().getDoubleExtra("latitudeValue",0)+ " lng:"+getIntent().getDoubleExtra("longitudeValue",0);
+        message = "I have an emergency, please find me at latitude -"+getIntent().getDoubleExtra("latitudeValue",0)+ " , longitude -"+getIntent().getDoubleExtra("longitudeValue",0);
 
         final Intent pickContact = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
 

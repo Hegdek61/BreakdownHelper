@@ -26,7 +26,7 @@
     <string name="ask_a_doctor">Ask A Doctor</string>
     <string name="explain_the_problem">Explain the problem</string>
     <string name="select_department">Select Department</string>
-    <string name="consult_doctor_will_be_get_back_to_you">Consult Doctor will be get back to you</string>
+    <string name="consult_doctor_will_be_get_back_to_you">The next available doctor will get back to you at the earliest.</string>
     <string name="main_news">main_news</string>
     <string name="description_news">description_news</string>
 </resources>
